@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Adventure · Descriptive Text</title>
+  <!-- Google Font: Poppins & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* ----- style.css (embedded for single-file demo, but clearly separated) ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f0f9ff;
+      color: #1e293b;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ----- color palette & utilities ----- */
+    .bg-blue { background: #dbeafe; }
+    .bg-green { background: #d1fae5; }
+    .bg-yellow { background: #fef9c3; }
+    .text-blue { color: #2563eb; }
+    .text-green { color: #16a34a; }
+    .text-yellow { color: #ca8a04; }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 32px;
+      border-radius: 60px;
+      font-weight: 600;
+      border: none;
+      background: #2563eb;
+      color: white;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+      transition: all 0.25s ease;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 28px rgba(37, 99, 235, 0.4);
+      background: #1d4ed8;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #2563eb;
+      color: #2563eb;
+      box-shadow: none;
+    }
+    .btn-outline:hover {
+      background: #2563eb;
+      color: white;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      padding: 28px 24px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05), 0 4px 10px rgba(0, 0, 0, 0.03);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.6);
+      backdrop-filter: blur(2px);
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0, 20, 40, 0.08);
+    }
+
+    /* ----- navigation ----- */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #2563eb, #16a34a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .logo i {
+      -webkit-text-fill-color: #2563eb;
+      margin-right: 6px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      font-weight: 500;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #1e293b;
+      transition: 0.2s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+    }
+    .nav-links a:hover {
+      color: #2563eb;
+      border-bottom-color: #2563eb;
+    }
+
+    /* sections */
+    section {
+      padding: 60px 0;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+    }
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+    .hero-content { flex: 1 1 300px; }
+    .hero-image { flex: 1 1 300px; text-align: center; }
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 40px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      margin-top: 20px;
+    }
+
+    .material-box {
+      background: #ffffffd9;
+      border-radius: 28px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+
+    .example-text {
+      background: #f1f5f9;
+      padding: 20px 24px;
+      border-radius: 20px;
+      border-left: 8px solid #2563eb;
+    }
+
+    .vocab-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .vocab-tag {
+      background: #e0f2fe;
+      padding: 8px 16px;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    /* audio & video */
+    .audio-player, .video-wrapper {
+      background: white;
+      border-radius: 60px;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.02);
+    }
+    .video-wrapper {
+      border-radius: 32px;
+      padding: 0;
+      overflow: hidden;
+      background: #000;
+    }
+    .video-wrapper iframe {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 0;
+    }
+
+    /* quiz & exercise */
+    .question-box {
+      background: #f8fafc;
+      border-radius: 28px;
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+    .options label {
+      display: block;
+      margin: 8px 0;
+      background: white;
+      padding: 10px 18px;
+      border-radius: 60px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      transition: 0.1s;
+      border: 1px solid #e2e8f0;
+      cursor: pointer;
+    }
+    .options label:hover { background: #dbeafe; }
+    .options input[type="radio"] { margin-right: 12px; }
+
+    .score-badge {
+      display: inline-block;
+      background: #16a34a;
+      color: white;
+      padding: 6px 20px;
+      border-radius: 60px;
+      font-weight: 600;
+    }
+
+    /* footer */
+    footer {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 40px 0 20px;
+      margin-top: 40px;
+      border-radius: 40px 40px 0 0;
+    }
+    footer a { color: #94a3b8; margin: 0 10px; transition: 0.2s; }
+    footer a:hover { color: white; }
+
+    /* responsive */
+    @media (max-width: 768px) {
+      nav { flex-direction: column; gap: 12px; }
+      .nav-links { gap: 16px; justify-content: center; }
+      .hero { flex-direction: column-reverse; text-align: center; }
+      .btn { padding: 10px 24px; }
+    }
+
+    /* flashcard style */
+    .flashcard {
+      background: linear-gradient(145deg, #ffffff, #f1f5f9);
+      border-radius: 20px;
+      padding: 16px 20px;
+      border: 1px solid white;
+    }
+
+    /* progress bar */
+    .progress-bar {
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 10px;
+      margin: 18px 0;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #2563eb, #16a34a);
+      border-radius: 10px;
+      transition: width 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Navigation -->
+    <nav>
+      <div class="logo"><i class="fas fa-feather-alt"></i> English Adventure</div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#objectives">Objectives</a>
+        <a href="#material">Material</a>
+        <a href="#media">Media</a>
+        <a href="#exercise">Exercise</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#about">About</a>
+      </div>
+    </nav>
+
+    <!-- HOME -->
+    <section id="home">
+      <div class="hero">
+        <div class="hero-content">
+          <h1 style="font-size: 2.8rem; font-weight: 800; line-height: 1.2;">Describe the World <br><span style="color:#2563eb;">in English</span></h1>
+          <p style="font-size: 1.2rem; margin: 20px 0 30px; color: #334155;">Learn descriptive text – structure, language, and write your own paragraph. Fun and interactive for Grade 7!</p>
+          <a href="#objectives" class="btn"><i class="fas fa-rocket"></i> Start Learning</a>
+        </div>
+        <div class="hero-image">
+          <img src="https://picsum.photos/id/152/500/350" alt="learning illustration" style="border-radius: 40px;">
+        </div>
+      </div>
+    </section>
+
+    <!-- OBJECTIVES -->
+    <section id="objectives" style="background: #eef2ff; border-radius: 60px; padding: 40px 30px;">
+      <h2 style="font-size: 2.2rem; font-weight: 700;"><i class="fas fa-bullseye text-blue"></i> Learning Objectives</h2>
+      <div class="grid-2">
+        <div class="card"><i class="fas fa-check-circle text-green" style="font-size: 2rem;"></i><h3>Understand</h3><p>Students understand what descriptive text is and its purpose.</p></div>
+        <div class="card"><i class="fas fa-sitemap text-blue" style="font-size: 2rem;"></i><h3>Identify Structure</h3><p>Recognize generic structure: identification & description.</p></div>
+        <div class="card"><i class="fas fa-pen-fancy text-yellow" style="font-size: 2rem;"></i><h3>Language Features</h3><p>Use adjectives, simple present tense, and specific nouns.</p></div>
+        <div class="card"><i class="fas fa-edit text-green" style="font-size: 2rem;"></i><h3>Write</h3><p>Write a simple descriptive paragraph about a person or place.</p></div>
+      </div>
+    </section>
+
+    <!-- MATERIAL -->
+    <section id="material">
+      <h2 style="font-size: 2.2rem;"><i class="fas fa-book-open text-blue"></i> Learning Material</h2>
+      <div class="grid-2">
+        <div class="card"><h3><i class="fas fa-layer-group"></i> Generic Structure</h3><p><strong>Identification:</strong> introduces the subject. <br><strong>Description:</strong> details appearance, qualities, etc.</p></div>
+        <div class="card"><h3><i class="fas fa-tag"></i> Language Features</h3><p>• Adjectives (beautiful, tall) <br> • Simple present tense <br> • Specific nouns & adverbs</p></div>
+      </div>
+      <div class="material-box">
+        <h3><i class="fas fa-paragraph"></i> Example Text</h3>
+        <div class="example-text">
+          <p><strong>My Cat</strong> <br> I have a pet cat named Mochi. She is small and fluffy. Her fur is white with black spots. She has big green eyes. Mochi likes to sleep on my bed. She is very playful and friendly.</p>
+        </div>
+      </div>
+      <div class="material-box" style="margin-top: 20px;">
+        <h3><i class="fas fa-list-ul"></i> Vocabulary List</h3>
+        <div class="vocab-grid">
+          <span class="vocab-tag">fluffy</span><span class="vocab-tag">playful</span><span class="vocab-tag">friendly</span>
+          <span class="vocab-tag">beautiful</span><span class="vocab-tag">tall</span><span class="vocab-tag">small</span>
+          <span class="vocab-tag">bright</span><span class="vocab-tag">curious</span>
+        </div>
+        <div class="flashcard" style="margin-top: 12px;"><i class="fas fa-lightbulb text-yellow"></i> <strong>Important:</strong> Use adjectives to describe noun + simple present.</div>
+      </div>
+    </section>
+
+    <!-- MEDIA: AUDIO & VIDEO -->
+    <section id="media">
+      <h2 style="font-size: 2.2rem;"><i class="fas fa-headphones text-blue"></i> Audio & Video</h2>
+      <div class="grid-2">
+        <div class="audio-player card">
+          <i class="fas fa-volume-up fa-2x text-blue"></i>
+          <div style="flex:1;">
+            <p style="font-weight:600;">Pronunciation: "Descriptive"</p>
+            <audio controls style="width:100%; border-radius: 60px;">
+              <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+              Your browser does not support audio.
+            </audio>
+          </div>
+          <button class="btn btn-outline" style="padding: 8px 20px;" onclick="document.querySelector('audio').play()"><i class="fas fa-play"></i></button>
+        </div>
+        <div class="video-wrapper card">
+          <iframe src="https://www.youtube.com/embed/9G9eH5Vf3H0?si=Y1F-cYPq6kIaaVJg" title="Descriptive Text lesson" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE EXERCISE (Multiple Choice + Fill in blank) -->
+    <section id="exercise" style="background: #f0fdf4; border-radius: 60px; padding: 40px 30px;">
+      <h2><i class="fas fa-puzzle-piece text-green"></i> Interactive Exercise</h2>
+      <div id="mc-exercise">
+        <div class="question-box">
+          <p><strong>1.</strong> What is the purpose of descriptive text?</p>
+          <div class="options" data-q="0">
+            <label><input type="radio" name="q0" value="0"> To tell a story</label>
+            <label><input type="radio" name="q0" value="1"> To describe a person, place, or thing</label>
+            <label><input type="radio" name="q0" value="2"> To explain how to do something</label>
+          </div>
+        </div>
+        <div class="question-box">
+          <p><strong>2.</strong> Which tense is commonly used in descriptive text?</p>
+          <div class="options" data-q="1">
+            <label><input type="radio" name="q1" value="0"> Simple Past</label>
+            <label><input type="radio" name="q1" value="1"> Simple Present</label>
+            <label><input type="radio" name="q1" value="2"> Future</label>
+          </div>
+        </div>
+        <div class="question-box">
+          <p><strong>3.</strong> "My cat has <u>fluffy</u> fur." The word "fluffy" is a(n) ...</p>
+          <div class="options" data-q="2">
+            <label><input type="radio" name="q2" value="0"> Noun</label>
+            <label><input type="radio" name="q2" value="1"> Adjective</label>
+            <label><input type="radio" name="q2" value="2"> Verb</label>
+          </div>
+        </div>
+        <div class="question-box">
+          <p><strong>4.</strong> Fill in the blank: "She ____ very kind." (use simple present)</p>
+          <div class="options" data-q="3">
+            <label><input type="radio" name="q3" value="0"> is</label>
+            <label><input type="radio" name="q3" value="1"> are</label>
+            <label><input type="radio" name="q3" value="2"> am</label>
+          </div>
+        </div>
+        <div class="question-box">
+          <p><strong>5.</strong> Which is an example of descriptive text?</p>
+          <div class="options" data-q="4">
+            <label><input type="radio" name="q4" value="0"> The cat is sleeping.</label>
+            <label><input type="radio" name="q4" value="1"> The cat has orange fur and green eyes.</label>
+            <label><input type="radio" name="q4" value="2"> The cat ran away.</label>
+          </div>
+        </div>
+        <button class="btn" id="checkExercise"><i class="fas fa-check"></i> Check Answers</button>
+        <div id="exerciseScore" style="margin-top: 20px; font-weight: 600;"></div>
+        <div class="progress-bar"><div class="progress-fill" id="exerciseProgress"></div></div>
+      </div>
+    </section>
+
+    <!-- MINI QUIZ -->
+    <section id="quiz">
+      <h2><i class="fas fa-star text-yellow"></i> Mini Quiz</h2>
+      <div id="quizContainer">
+        <div class="question-box"><p><strong>1.</strong> Descriptive text usually describes ...</p><div class="options" data-qz="0"><label><input type="radio" name="qz0" value="0"> a process</label><label><input type="radio" name="qz0" value="1"> a person/place/thing</label><label><input type="radio" name="qz0" value="2"> a sequence</label></div></div>
+        <div class="question-box"><p><strong>2.</strong> Which is NOT a language feature of descriptive text?</p><div class="options" data-qz="1"><label><input type="radio" name="qz1" value="0"> adjectives</label><label><input type="radio" name="qz1" value="1"> simple present</label><label><input type="radio" name="qz1" value="2"> imperative verbs</label></div></div>
+        <div class="question-box"><p><strong>3.</strong> "The garden is beautiful." The word "beautiful" describes ...</p><div class="options" data-qz="2"><label><input type="radio" name="qz2" value="0"> garden</label><label><input type="radio" name="qz2" value="1"> is</label><label><input type="radio" name="qz2" value="2"> beautiful</label></div></div>
+        <div class="question-box"><p><strong>4.</strong> Which sentence is descriptive?</p><div class="options" data-qz="3"><label><input type="radio" name="qz3" value="0"> I like apples.</label><label><input type="radio" name="qz3" value="1"> The apple is red and sweet.</label><label><input type="radio" name="qz3" value="2"> Apple is a fruit.</label></div></div>
+        <div class="question-box"><p><strong>5.</strong> Structure of descriptive text: identification and ...</p><div class="options" data-qz="4"><label><input type="radio" name="qz4" value="0"> description</label><label><input type="radio" name="qz4" value="1"> conclusion</label><label><input type="radio" name="qz4" value="2"> orientation</label></div></div>
+        <button class="btn" id="checkQuiz"><i class="fas fa-trophy"></i> Submit Quiz</button>
+        <div id="quizScore" style="margin-top: 20px; font-weight: 700;"></div>
+        <div id="quizFeedback" style="margin-top: 10px;"></div>
+      </div>
+    </section>
+
+    <!-- ABOUT & CONTACT -->
+    <section id="about" style="display: flex; flex-wrap: wrap; gap: 40px; background: #f1f5f9; border-radius: 60px; padding: 40px 30px;">
+      <div style="flex:1;"><h2><i class="fas fa-info-circle"></i> About</h2><p>English Adventure is a sample educational website for Grade 7 descriptive text learning. Designed as a prototype for R&D thesis in English Education.</p><p style="margin-top: 10px;"><i class="fas fa-user-graduate"></i> Developer: R&D Team · 2026</p></div>
+      <div style="flex:1;"><h2><i class="fas fa-address-card"></i> Contact</h2><p><i class="fas fa-envelope text-blue"></i> english.adventure@edu.com</p><p><i class="fab fa-instagram text-blue"></i> @english_adventure</p></div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+        <span>© 2026 English Adventure · for education</span>
+        <span><i class="fab fa-instagram"></i> <i class="fab fa-twitter"></i> <i class="fab fa-youtube"></i></span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // ----- script.js -----
+    document.addEventListener('DOMContentLoaded', function () {
+      // Exercise answers (multiple choice + fill)
+      const exerciseAnswers = [1, 1, 1, 0, 1]; // index of correct option
+      const quizAnswers = [1, 2, 0, 1, 0];
+
+      function calculateScore(prefix, answerKey, scoreId, progressId = null, feedbackId = null) {
+        let correct = 0;
+        for (let i = 0; i < answerKey.length; i++) {
+          const name = prefix + i;
+          const selected = document.querySelector(`input[name="${name}"]:checked`);
+          if (selected && parseInt(selected.value) === answerKey[i]) correct++;
+        }
+        const total = answerKey.length;
+        const score = Math.round((correct / total) * 100);
+        const scoreEl = document.getElementById(scoreId);
+        if (scoreEl) scoreEl.innerHTML = `Score: ${correct}/${total} (${score}%)`;
+
+        if (feedbackId) {
+          const fb = document.getElementById(feedbackId);
+          if (fb) {
+            if (score >= 80) fb.innerHTML = '<span style="background:#16a34a; padding:6px 20px; border-radius:60px; color:white;">🌟 Excellent!</span>';
+            else if (score >= 60) fb.innerHTML = '<span style="background:#ca8a04; padding:6px 20px; border-radius:60px; color:white;">👍 Good Job!</span>';
+            else fb.innerHTML = '<span style="background:#dc2626; padding:6px 20px; border-radius:60px; color:white;">📚 Keep Practicing!</span>';
+          }
+        }
+        if (progressId) {
+          const prog = document.getElementById(progressId);
+          if (prog) prog.style.width = score + '%';
+        }
+        return score;
+      }
+
+      document.getElementById('checkExercise').addEventListener('click', function() {
+        calculateScore('q', exerciseAnswers, 'exerciseScore', 'exerciseProgress');
+      });
+
+      document.getElementById('checkQuiz').addEventListener('click', function() {
+        calculateScore('qz', quizAnswers, 'quizScore', null, 'quizFeedback');
+      });
+
+      // smooth scrolling for nav links
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
